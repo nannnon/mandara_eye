@@ -29,6 +29,10 @@ class Eye
   
   void draw()
   {
+    pushMatrix();
+    translate(width / 2 + _radius * cos(_radian), height / 2 + _radius * sin(_radian));
+    scale(_scale);
+    
     int centerX = 0;
     int centerY = 0;
     
@@ -43,27 +47,34 @@ class Eye
     
     // マキマ
     stroke(255);
+    strokeWeight(4);
     noFill();
     float step = 20;
     for (float r = step; r < pupilR; r += step)
     {
       circle(centerX, centerY, r);
     }
+    
+    popMatrix();
   }
 }
 
 
-int eyesNum = 10;
 Eye eyes[];
 
 void setup()
 {
-  size(1024, 1024);
+  size(512, 512);
   
+  int eyesNum = 20;
   eyes = new Eye[eyesNum];
-  for (int i = 0; i < eyesNum; ++i)
+  for (int i = 0; i < eyesNum / 2; ++i)
+  {
+    eyes[i] = new Eye(0.5, 256, i * 0.5, 0.01, color(random(255), random(255), random(255)), color(random(255), random(255), random(255)));
+  }
+  for (int i = eyesNum / 2; i < eyesNum; ++i)
   {  
-    eyes[i] = new Eye(1, 256, i * 0.5, 0.1, color(255), color(0));
+    eyes[i] = new Eye(0.25, 128, i * 0.5, -0.01, color(random(255), random(255), random(255)), color(random(255), random(255), random(255)));
   }
 }
 
