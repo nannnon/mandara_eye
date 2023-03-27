@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+
+
 class Eye
 {
   float _scale;
@@ -24,6 +27,10 @@ class Eye
   void move()
   {
     _radian += _radianStep;
+    if (_radian >= 2 * PI)
+    {
+      _radian -= 2 * PI;
+    }
     ++_counter;
   }
   
@@ -31,6 +38,7 @@ class Eye
   {
     pushMatrix();
     translate(width / 2 + _radius * cos(_radian), height / 2 + _radius * sin(_radian));
+    rotate(3 * PI / 2 + _radian);
     scale(_scale);
     
     int centerX = 0;
@@ -60,21 +68,30 @@ class Eye
 }
 
 
-Eye eyes[];
+ArrayList<Eye> eyes;
 
 void setup()
 {
   size(512, 512);
   
-  int eyesNum = 20;
-  eyes = new Eye[eyesNum];
-  for (int i = 0; i < eyesNum / 2; ++i)
+  eyes = new ArrayList<Eye>();
+  
+  int eyesNum = 10;
+  for (int i = 0; i < eyesNum; ++i)
   {
-    eyes[i] = new Eye(0.5, 256, i * 0.5, 0.01, color(random(255), random(255), random(255)), color(random(255), random(255), random(255)));
+    eyes.add(new Eye(0.4, 220, i * 2 * PI / eyesNum, 0.01, color(random(255), random(255), random(255)), color(random(255), random(255), random(255))));
   }
-  for (int i = eyesNum / 2; i < eyesNum; ++i)
+  
+  eyesNum = 8;
+  for (int i = 0; i < eyesNum; ++i)
   {  
-    eyes[i] = new Eye(0.25, 128, i * 0.5, -0.01, color(random(255), random(255), random(255)), color(random(255), random(255), random(255)));
+    eyes.add(new Eye(0.3, 128, i * 2 * PI / eyesNum, -0.01, color(random(255), random(255), random(255)), color(random(255), random(255), random(255))));
+  }
+  
+  eyesNum = 7;
+  for (int i = 0; i < eyesNum; ++i)
+  {  
+    eyes.add(new Eye(0.2, 64, i * 2 * PI / eyesNum, 0.01, color(random(255), random(255), random(255)), color(random(255), random(255), random(255))));
   }
 }
 
