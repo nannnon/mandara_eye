@@ -8,7 +8,6 @@ class Eye
   float _radian;
   float _radianStep;
   
-  int _counter;
   color _conjunctivaColor;
   color _pupilColor;
   
@@ -19,7 +18,6 @@ class Eye
     _radian = radian;
     _radianStep = radianStep;
     
-    _counter = 0;
     _conjunctivaColor = cColor;
     _pupilColor = pColor;
   }
@@ -31,7 +29,6 @@ class Eye
     {
       _radian -= 2 * PI;
     }
-    ++_counter;
   }
   
   void draw()
@@ -84,16 +81,34 @@ void setup()
     eyes.add(new Eye(0.4, 220, i * 2 * PI / eyesNum, 0.01, color(random(255), random(255), random(255)), color(random(255), random(255), random(255))));
   }
   
+  eyesNum = 9;
+  for (int i = 0; i < eyesNum; ++i)
+  {  
+    eyes.add(new Eye(0.3, 160, i * 2 * PI / eyesNum, -0.01, color(random(255), random(255), random(255)), color(random(255), random(255), random(255))));
+  }
+  
   eyesNum = 8;
   for (int i = 0; i < eyesNum; ++i)
   {  
-    eyes.add(new Eye(0.3, 128, i * 2 * PI / eyesNum, -0.01, color(random(255), random(255), random(255)), color(random(255), random(255), random(255))));
+    eyes.add(new Eye(0.2, 100, i * 2 * PI / eyesNum, 0.01, color(random(255), random(255), random(255)), color(random(255), random(255), random(255))));
   }
   
-  eyesNum = 7;
+  eyesNum = 8;
   for (int i = 0; i < eyesNum; ++i)
   {  
-    eyes.add(new Eye(0.2, 64, i * 2 * PI / eyesNum, 0.01, color(random(255), random(255), random(255)), color(random(255), random(255), random(255))));
+    eyes.add(new Eye(0.15, 70, i * 2 * PI / eyesNum, -0.01, color(random(255), random(255), random(255)), color(random(255), random(255), random(255))));
+  }
+  
+  eyesNum = 8;
+  for (int i = 0; i < eyesNum; ++i)
+  {  
+    eyes.add(new Eye(0.1, 40, i * 2 * PI / eyesNum, 0.01, color(random(255), random(255), random(255)), color(random(255), random(255), random(255))));
+  }
+  
+  eyesNum = 8;
+  for (int i = 0; i < eyesNum; ++i)
+  {  
+    eyes.add(new Eye(0.05, 20, i * 2 * PI / eyesNum, -0.01, color(random(255), random(255), random(255)), color(random(255), random(255), random(255))));
   }
 }
 
