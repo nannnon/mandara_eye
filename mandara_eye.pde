@@ -46,10 +46,12 @@ class Eye
     
     // 白目
     fill(_conjunctivaColor);
+    noStroke();
     ellipse(centerX, centerY, 256, 128);
     
     // 瞳孔
     fill(_pupilColor);
+    noStroke();
     float pupilR = 110;
     circle(centerX, centerY, pupilR);
     
