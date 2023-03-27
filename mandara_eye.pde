@@ -121,4 +121,6 @@ void draw()
     eye.move();
     eye.draw();
   }
+  
+  saveFrame("######.png");
 }
